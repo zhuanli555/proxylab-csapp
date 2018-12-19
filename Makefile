@@ -8,14 +8,16 @@ LDFLAGS = -lpthread
 
 OBJS = proxy.o csapp.o
 
+
 all: proxy
 
 proxy: $(OBJS)
+	$(CC) $(CFLAGS) proxy.o csapp.o -o proxy $(LDFLAGS)
 
-csapp.o: csapp.c
+csapp.o: csapp.c csapp.h
 	$(CC) $(CFLAGS) -c csapp.c
 
-proxy.o: proxy.c
+proxy.o: proxy.c csapp.h
 	$(CC) $(CFLAGS) -c proxy.c
 
 handin:
